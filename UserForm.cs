@@ -48,8 +48,8 @@ namespace DBProject
         {
             SqlDataAdapter adapter = new SqlDataAdapter();
             DataTable table = new DataTable();
-            var from=dateTimePickerFrom.Value.ToString("yyyy/MM/dd");
-            var to=dateTimePickerTo.Value.ToString("yyyy/MM/dd");
+            var from=dateTimePickerFrom.Value.ToString("yyyy/MM/dd"); //2023-02-2
+            var to=dateTimePickerTo.Value.ToString("yyyy/MM/dd"); //2023-04-01 отсутствие комнаты 4
             //fromlabel.Text= from.ToString();
             //Tolabel.Text= to.ToString();
             string querystring = $@"select * from f_OpenRooms('{from}','{to}')";
