@@ -110,8 +110,10 @@ namespace DBProject
                 querystring = $@"isert into [users] ([user], password, pasport, admin) values ('{loginUser}','{passUser}','{pasportUser}',false)";
                 adapter = new SqlDataAdapter();
                 command = new SqlCommand(querystring, database.GetConnection());
-                table = new DataTable();
+                //table = new DataTable();
                 adapter.SelectCommand = command;
+                MessageBox.Show("Успешно введен пользователь", "Ура", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
             }
         }
     }

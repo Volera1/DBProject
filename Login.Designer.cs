@@ -49,6 +49,7 @@
             // 
             // usernameTxtBox
             // 
+            this.usernameTxtBox.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.usernameTxtBox.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.usernameTxtBox.Location = new System.Drawing.Point(154, 96);
             this.usernameTxtBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -58,6 +59,7 @@
             // 
             // passwordTxtBox
             // 
+            this.passwordTxtBox.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.passwordTxtBox.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.passwordTxtBox.Location = new System.Drawing.Point(154, 183);
             this.passwordTxtBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -68,6 +70,7 @@
             // 
             // btnAutorization
             // 
+            this.btnAutorization.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnAutorization.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnAutorization.Location = new System.Drawing.Point(14, 272);
             this.btnAutorization.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);

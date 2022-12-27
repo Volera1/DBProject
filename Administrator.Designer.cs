@@ -51,6 +51,7 @@ namespace DBProject
             // 
             // txtQuery
             // 
+            this.txtQuery.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtQuery.Location = new System.Drawing.Point(6, 6);
             this.txtQuery.Multiline = true;
             this.txtQuery.Name = "txtQuery";
@@ -59,6 +60,7 @@ namespace DBProject
             // 
             // btnExecute
             // 
+            this.btnExecute.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnExecute.Location = new System.Drawing.Point(759, 244);
             this.btnExecute.Name = "btnExecute";
             this.btnExecute.Size = new System.Drawing.Size(126, 33);
@@ -69,6 +71,7 @@ namespace DBProject
             // 
             // dgName
             // 
+            this.dgName.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.dgName.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgName.Location = new System.Drawing.Point(10, 283);
             this.dgName.Name = "dgName";
@@ -79,6 +82,7 @@ namespace DBProject
             // 
             // tabControl1
             // 
+            this.tabControl1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.tabControl1.Controls.Add(this.Query);
             this.tabControl1.Controls.Add(this.addUser);
             this.tabControl1.Controls.Add(this.tabPage1);
@@ -122,6 +126,7 @@ namespace DBProject
             // 
             // btnAddUser
             // 
+            this.btnAddUser.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnAddUser.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnAddUser.Location = new System.Drawing.Point(248, 349);
             this.btnAddUser.Name = "btnAddUser";
@@ -133,6 +138,7 @@ namespace DBProject
             // 
             // passwordTxtBox
             // 
+            this.passwordTxtBox.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.passwordTxtBox.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.passwordTxtBox.Location = new System.Drawing.Point(384, 246);
             this.passwordTxtBox.Name = "passwordTxtBox";
@@ -141,6 +147,7 @@ namespace DBProject
             // 
             // passordlabel
             // 
+            this.passordlabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.passordlabel.AutoSize = true;
             this.passordlabel.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.passordlabel.Location = new System.Drawing.Point(232, 249);
@@ -151,6 +158,7 @@ namespace DBProject
             // 
             // usernameTxtBox
             // 
+            this.usernameTxtBox.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.usernameTxtBox.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.usernameTxtBox.Location = new System.Drawing.Point(384, 172);
             this.usernameTxtBox.Name = "usernameTxtBox";
@@ -159,6 +167,7 @@ namespace DBProject
             // 
             // usernamelabel
             // 
+            this.usernamelabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.usernamelabel.AutoSize = true;
             this.usernamelabel.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.usernamelabel.Location = new System.Drawing.Point(248, 179);
@@ -169,6 +178,7 @@ namespace DBProject
             // 
             // pasportlable
             // 
+            this.pasportlable.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.pasportlable.AutoSize = true;
             this.pasportlable.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.pasportlable.Location = new System.Drawing.Point(223, 105);
@@ -179,6 +189,7 @@ namespace DBProject
             // 
             // pasportOfUserTxtBox
             // 
+            this.pasportOfUserTxtBox.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.pasportOfUserTxtBox.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.pasportOfUserTxtBox.Location = new System.Drawing.Point(384, 98);
             this.pasportOfUserTxtBox.Name = "pasportOfUserTxtBox";

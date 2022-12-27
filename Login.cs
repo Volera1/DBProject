@@ -60,6 +60,7 @@ namespace DBProject
                 {
                     this.Hide();
                     administrator.Close();
+                    userform.Close();
                     userform = new UserForm(table.Rows[0].Field<string>("pasport"));
                     userform.ShowDialog();
                     this.Show();
