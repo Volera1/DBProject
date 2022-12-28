@@ -213,7 +213,6 @@ namespace DBProject
             }
         }
 
-
         private void updateTableComboBox_SelectedValueChanged(object sender, EventArgs e)
         {
             SqlDataAdapter adapter = new SqlDataAdapter();
@@ -335,6 +334,19 @@ namespace DBProject
             }
             else if (selectedTable == "users")
             {
+                labelComboBox1.Text = "Паспорт:"; labelComboBox1.Visible = true;
+                comboBox1.Visible = true;
+                querystring = $@"select pasport from [Guest]";
+                adapter = new SqlDataAdapter();
+                table = new DataTable();
+                command = new SqlCommand(querystring, database.GetConnection());
+                adapter.SelectCommand = command;
+                adapter.Fill(table);
+                comboBox1.Items.Clear();
+                for (int i = 0; i < table.Rows.Count; i++)
+                {
+                    comboBox1.Items.Add(table.Rows[i].Field<string>("Pasport"));
+                }
                 labelTextBox1.Text = "Username:";
                 labelTextBox1.Visible = true;
                 textBox1.Visible = true;
@@ -425,6 +437,7 @@ namespace DBProject
                 }
                 else if (selectedUpdateTable == "users")
                 {
+                    comboBox1.SelectedItem = row.Cells[4].Value.ToString();
                     textBox1.Text = row.Cells[1].Value.ToString();
                     textBox2.Text = row.Cells[2].Value.ToString();
                 }
@@ -438,7 +451,8 @@ namespace DBProject
                 MessageBox.Show("Обязательно выберите таблицу для обработки", "Нет таблицы", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            else if(keyTextBox.Text==null){
+            else if (keyTextBox.Text == "")
+            {
                 MessageBox.Show("Обязательно выберите элемент для обработки", "Нет элемента", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
@@ -446,34 +460,69 @@ namespace DBProject
             switch (selectedUpdateTable)
             {
                 case "Order":
-                {
-                    if (checkDatesOrder(dateTimePickerFrom,dateTimePickerTo) && 
-                            comboBox1.SelectedItem!=null && comboBox2.SelectedItem!=null) {
-                            var pasport =comboBox1.SelectedItem;
-                            var bed =comboBox2.SelectedItem;
-                            var arrivalDate = dateTimePickerFrom.Value.ToString("yyyy/MM/dd"); ;
-                            var departureDate = dateTimePickerTo.Value.ToString("yyyy/MM/dd") ;
+                    {
+                        if (comboBox1.SelectedItem != null && comboBox2.SelectedItem != null &&
+                                 checkDatesOrder(dateTimePickerFrom, dateTimePickerTo))
+                        {
+                            var pasport = comboBox1.SelectedItem;
+                            var bed = comboBox2.SelectedItem;
+                            var arrivalDate = dateTimePickerFrom.Value.ToString("yyyy/MM/dd");
+                            var departureDate = dateTimePickerTo.Value.ToString("yyyy/MM/dd");
                             database.openConnection();
                             string querystring = $@"update [Order] set pasport='{pasport}', NumBed=N'{bed}', ArrivalDate='{arrivalDate}', DepartureDate='{departureDate}' where OrderKey={thisKey}";
                             SqlCommand command = new SqlCommand(querystring, database.GetConnection());
                             command.ExecuteNonQuery();
                             database.closeConnection();
-                            MessageBox.Show("Успешно введена запись", "Ура", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            }
-                        else {
+                            MessageBox.Show("Успешно изменена запись", "Ура", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        else
+                        {
                             MessageBox.Show("Что-то пошло не так", "ОЙ", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                         break;
-                }
+                    }
                 case "Room":
-                    { 
-                        break;}
+                    {
+                        if (textBox1.Text!="")
+                        {
+                            database.openConnection();
+                            string querystring = $@"update [Room] set price='{textBox1.Text}' where NumRoom={thisKey}";
+                            SqlCommand command = new SqlCommand(querystring, database.GetConnection());
+                            command.ExecuteNonQuery();
+                            database.closeConnection();
+                            MessageBox.Show("Успешно изменена запись", "Ура", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                        }
+                        else
+                        {
+                            MessageBox.Show("Заполните цену", "ОЙ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                        break;
+                    }
                 case "Guest":
                     {
                         break;
                     }
                 case "Reservation":
                     {
+                        if (comboBox1.SelectedItem !=null && comboBox2.SelectedItem!=null &&
+                            checkDatesReservation(dateTimePickerFrom, dateTimePickerTo))
+                        {
+                            var org = comboBox1.SelectedItem;
+                            var room = comboBox2.SelectedItem;
+                            var arrivalDate = dateTimePickerFrom.Value.ToString("yyyy/MM/dd");
+                            var departureDate = dateTimePickerTo.Value.ToString("yyyy/MM/dd");
+                            database.openConnection();
+                            string querystring = $@"update [Reservation] set OrgKey='{org}', NumRoom=N'{room}', ArrivalTime='{arrivalDate}', DepartureTime='{departureDate}' where ReserveKey={thisKey}";
+                            SqlCommand command = new SqlCommand(querystring, database.GetConnection());
+                            command.ExecuteNonQuery();
+                            database.closeConnection();
+                            MessageBox.Show("Успешно изменена запись", "Ура", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Что-то пошло не так", "ОЙ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
                         break;
                     }
                 case "Organization":
@@ -482,9 +531,25 @@ namespace DBProject
                     }
                 case "users":
                     {
+                        var login = textBox1.Text;
+                        var password = textBox2.Text;
+                        if (comboBox1.SelectedItem != null && login != "" && password != "" &&
+                            checkUser(comboBox1.SelectedItem.ToString(), login, password))
+                        {
+                            var pasport = comboBox1.SelectedItem.ToString();
+                            database.openConnection();
+                            string querystring = $@"update [users] set [user]='{login}', password='{password}', pasport='{pasport}' where userKey={thisKey}";
+                            SqlCommand command = new SqlCommand(querystring, database.GetConnection());
+                            command.ExecuteNonQuery();
+                            database.closeConnection();
+                            MessageBox.Show("Успешно изменена запись", "Ура", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                        }
                         break;
                     }
+
             }
+            updateTableComboBox_SelectedValueChanged(sender, e);
         }
         private bool checkDatesReservation(DateTimePicker From, DateTimePicker To)
         {
@@ -520,19 +585,9 @@ namespace DBProject
             SqlDataAdapter adapter = new SqlDataAdapter();
             DataTable table = new DataTable();
 
-            string querystring = $@"select UserKey, [user], password, admin from [users] where [pasport] = '{pasportUser}'";
-
-            SqlCommand command = new SqlCommand(querystring, database.GetConnection());
-            adapter.SelectCommand = command;
-            adapter.Fill(table);
-            if (table.Rows.Count > 0)
-            {
-                MessageBox.Show("Такой пользователь уже есть (по паспорту)", "Паспорт", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
-            }
-            querystring = $@"select pasport from [Guest] where [pasport] = '{pasportUser}'";
+            string querystring = $@"select pasport from [Guest] where [pasport] = '{pasportUser}'";
             adapter = new SqlDataAdapter();
-            command = new SqlCommand(querystring, database.GetConnection());
+            SqlCommand command = new SqlCommand(querystring, database.GetConnection());
             table = new DataTable();
             adapter.SelectCommand = command;
             adapter.Fill(table);
