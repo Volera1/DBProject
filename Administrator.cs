@@ -134,9 +134,15 @@ namespace DBProject
         private void btnAddOrder_Click(object sender, EventArgs e)
         {
             var pasport = pasportOrderTxtBox.Text;
-            var numbed = bedComboBox.SelectedItem;
+            
             var dateArrival = arrivalDatePicker.Value.ToString("yyyy/MM/dd");
             var dateDeparture = departureDatePicker.Value.ToString("yyyy/MM/dd");
+            if (pasport == "" || bedComboBox.SelectedItem == null)
+            {
+                MessageBox.Show("Все значения должны быть заполнены", "Пустые значения", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            var numbed = bedComboBox.SelectedItem;
             if (checkDatesOrder(arrivalDatePicker, departureDatePicker))
             {
                 string querystring = $@"insert into [Order](Pasport, NumBed, ArrivalDate, DepartureDate) values ('{pasport}',N'{numbed}','{dateArrival}','{dateDeparture}')";
@@ -197,6 +203,11 @@ namespace DBProject
 
         private void btnAddReservation_Click(object sender, EventArgs e)
         {
+            if (orgNumComboBox.SelectedItem == null|| numRoomComboBox.SelectedItem==null)
+            {
+                MessageBox.Show("Все значения должны быть заполнены", "Пустые значения", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             var selectedOrg = orgNumComboBox.SelectedItem.ToString();
             var arrivalTime = arrivalTimePicker.Value.ToString("yyyy/MM/dd");
             var departureTime = departureTimePicker.Value.ToString("yyyy/MM/dd");
@@ -585,12 +596,12 @@ namespace DBProject
         }
         private bool checkDatesReservation(DateTimePicker From, DateTimePicker To)
         {
-            if (From.Value <= DateTime.Now)
+            if (From.Value.Date <= DateTime.Now)
             {
                 MessageBox.Show("Дата приезда не может быть запланирована в прошлом. Измените дату приезда", "Ошибка дат", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
-            if (From.Value >= To.Value)
+            if (From.Value.Date >= To.Value.Date)
             {
                 MessageBox.Show("Дата приезда не может быть позже отъезда. Измените даты", "Ошибка дат", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
@@ -599,12 +610,12 @@ namespace DBProject
         }
         private bool checkDatesOrder(DateTimePicker From, DateTimePicker To)
         {
-            if (From.Value >= DateTime.Now)
+            if (From.Value.Date >= DateTime.Now)
             {
                 MessageBox.Show("Нельзя фиксировать проживание на будущее. Измените дату приезда", "Ошибка дат", MessageBoxButtons.OK, MessageBoxIcon.Error); 
                 return false;
             }
-            if (From.Value >= To.Value)
+            if (From.Value.Date >= To.Value.Date)
             {
                 MessageBox.Show("Дата приезда не может быть позже отъезда. Измените даты", "Ошибка дат", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
