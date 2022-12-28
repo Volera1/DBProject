@@ -73,6 +73,7 @@ namespace DBProject
             this.deletedDataGridView = new System.Windows.Forms.DataGridView();
             this.labelDeletedKey = new System.Windows.Forms.Label();
             this.Update = new System.Windows.Forms.TabPage();
+            this.btnUpdate = new System.Windows.Forms.Button();
             this.dateTimePickerTo = new System.Windows.Forms.DateTimePicker();
             this.dateTimePickerFrom = new System.Windows.Forms.DateTimePicker();
             this.labelto = new System.Windows.Forms.Label();
@@ -90,7 +91,11 @@ namespace DBProject
             this.updateTableComboBox = new System.Windows.Forms.ComboBox();
             this.updateGridView = new System.Windows.Forms.DataGridView();
             this.labelfrom = new System.Windows.Forms.Label();
-            this.btnUpdate = new System.Windows.Forms.Button();
+            this.numBedsUpDown = new System.Windows.Forms.NumericUpDown();
+            this.label12 = new System.Windows.Forms.Label();
+            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.label13 = new System.Windows.Forms.Label();
+            this.btnAddRoom = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgName)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.Query.SuspendLayout();
@@ -98,10 +103,13 @@ namespace DBProject
             this.addOrder.SuspendLayout();
             this.addReservation.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.organizationsGridView)).BeginInit();
+            this.addRoom.SuspendLayout();
             this.Delete.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.deletedDataGridView)).BeginInit();
             this.Update.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.updateGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numBedsUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.SuspendLayout();
             // 
             // txtQuery
@@ -494,6 +502,11 @@ namespace DBProject
             // 
             // addRoom
             // 
+            this.addRoom.Controls.Add(this.btnAddRoom);
+            this.addRoom.Controls.Add(this.label13);
+            this.addRoom.Controls.Add(this.numericUpDown1);
+            this.addRoom.Controls.Add(this.label12);
+            this.addRoom.Controls.Add(this.numBedsUpDown);
             this.addRoom.Location = new System.Drawing.Point(4, 29);
             this.addRoom.Name = "addRoom";
             this.addRoom.Size = new System.Drawing.Size(891, 502);
@@ -621,6 +634,17 @@ namespace DBProject
             this.Update.TabIndex = 5;
             this.Update.Text = "Изменить";
             this.Update.UseVisualStyleBackColor = true;
+            // 
+            // btnUpdate
+            // 
+            this.btnUpdate.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnUpdate.Location = new System.Drawing.Point(502, 425);
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.Size = new System.Drawing.Size(386, 74);
+            this.btnUpdate.TabIndex = 19;
+            this.btnUpdate.Text = "Принять изменения";
+            this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // dateTimePickerTo
             // 
@@ -801,16 +825,71 @@ namespace DBProject
             this.labelfrom.TabIndex = 15;
             this.labelfrom.Text = "Дата приезда:";
             // 
-            // btnUpdate
+            // numBedsUpDown
             // 
-            this.btnUpdate.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnUpdate.Location = new System.Drawing.Point(502, 425);
-            this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(386, 74);
-            this.btnUpdate.TabIndex = 19;
-            this.btnUpdate.Text = "Принять изменения";
-            this.btnUpdate.UseVisualStyleBackColor = true;
-            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
+            this.numBedsUpDown.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.numBedsUpDown.Location = new System.Drawing.Point(473, 108);
+            this.numBedsUpDown.Maximum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.numBedsUpDown.Name = "numBedsUpDown";
+            this.numBedsUpDown.Size = new System.Drawing.Size(185, 47);
+            this.numBedsUpDown.TabIndex = 0;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label12.Location = new System.Drawing.Point(127, 110);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(321, 41);
+            this.label12.TabIndex = 1;
+            this.label12.Text = "Количество кроватей:";
+            // 
+            // numericUpDown1
+            // 
+            this.numericUpDown1.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.numericUpDown1.Location = new System.Drawing.Point(473, 201);
+            this.numericUpDown1.Maximum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            0});
+            this.numericUpDown1.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDown1.Name = "numericUpDown1";
+            this.numericUpDown1.Size = new System.Drawing.Size(185, 47);
+            this.numericUpDown1.TabIndex = 2;
+            this.numericUpDown1.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label13.Location = new System.Drawing.Point(226, 203);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(222, 41);
+            this.label13.TabIndex = 3;
+            this.label13.Text = "Цена комнаты:";
+            // 
+            // btnAddRoom
+            // 
+            this.btnAddRoom.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnAddRoom.Location = new System.Drawing.Point(127, 293);
+            this.btnAddRoom.Name = "btnAddRoom";
+            this.btnAddRoom.Size = new System.Drawing.Size(626, 112);
+            this.btnAddRoom.TabIndex = 4;
+            this.btnAddRoom.Text = "Добавить";
+            this.btnAddRoom.UseVisualStyleBackColor = true;
             // 
             // Administrator
             // 
@@ -831,12 +910,16 @@ namespace DBProject
             this.addReservation.ResumeLayout(false);
             this.addReservation.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.organizationsGridView)).EndInit();
+            this.addRoom.ResumeLayout(false);
+            this.addRoom.PerformLayout();
             this.Delete.ResumeLayout(false);
             this.Delete.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.deletedDataGridView)).EndInit();
             this.Update.ResumeLayout(false);
             this.Update.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.updateGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numBedsUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -904,6 +987,11 @@ namespace DBProject
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.TabPage addRoom;
         private System.Windows.Forms.Button btnUpdate;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.NumericUpDown numBedsUpDown;
+        private System.Windows.Forms.Button btnAddRoom;
     }
 }
 
