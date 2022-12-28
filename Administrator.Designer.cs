@@ -71,6 +71,24 @@ namespace DBProject
             this.label9 = new System.Windows.Forms.Label();
             this.deletedDataGridView = new System.Windows.Forms.DataGridView();
             this.labelDeletedKey = new System.Windows.Forms.Label();
+            this.Update = new System.Windows.Forms.TabPage();
+            this.dateTimePickerTo = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePickerFrom = new System.Windows.Forms.DateTimePicker();
+            this.labelto = new System.Windows.Forms.Label();
+            this.labelfrom = new System.Windows.Forms.Label();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.labelTextBox2 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.labelTextBox1 = new System.Windows.Forms.Label();
+            this.labelComboBox2 = new System.Windows.Forms.Label();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.labelComboBox1 = new System.Windows.Forms.Label();
+            this.keyTextBox = new System.Windows.Forms.TextBox();
+            this.labelKey = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.updateTableComboBox = new System.Windows.Forms.ComboBox();
+            this.updateGridView = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.dgName)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.Query.SuspendLayout();
@@ -80,6 +98,8 @@ namespace DBProject
             ((System.ComponentModel.ISupportInitialize)(this.organizationsGridView)).BeginInit();
             this.Delete.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.deletedDataGridView)).BeginInit();
+            this.Update.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.updateGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // txtQuery
@@ -121,6 +141,7 @@ namespace DBProject
             this.tabControl1.Controls.Add(this.addOrder);
             this.tabControl1.Controls.Add(this.addReservation);
             this.tabControl1.Controls.Add(this.Delete);
+            this.tabControl1.Controls.Add(this.Update);
             this.tabControl1.Location = new System.Drawing.Point(12, 12);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -379,7 +400,7 @@ namespace DBProject
             this.numRoomComboBox.FormattingEnabled = true;
             this.numRoomComboBox.Location = new System.Drawing.Point(195, 251);
             this.numRoomComboBox.Name = "numRoomComboBox";
-            this.numRoomComboBox.Size = new System.Drawing.Size(97, 36);
+            this.numRoomComboBox.Size = new System.Drawing.Size(128, 36);
             this.numRoomComboBox.TabIndex = 14;
             // 
             // label8
@@ -450,7 +471,7 @@ namespace DBProject
             this.orgNumComboBox.FormattingEnabled = true;
             this.orgNumComboBox.Location = new System.Drawing.Point(195, 68);
             this.orgNumComboBox.Name = "orgNumComboBox";
-            this.orgNumComboBox.Size = new System.Drawing.Size(97, 36);
+            this.orgNumComboBox.Size = new System.Drawing.Size(128, 36);
             this.orgNumComboBox.TabIndex = 2;
             // 
             // btnAddReservation
@@ -462,6 +483,7 @@ namespace DBProject
             this.btnAddReservation.TabIndex = 1;
             this.btnAddReservation.Text = "Добавить";
             this.btnAddReservation.UseVisualStyleBackColor = true;
+            this.btnAddReservation.Click += new System.EventHandler(this.btnAddReservation_Click);
             // 
             // Delete
             // 
@@ -555,6 +577,210 @@ namespace DBProject
             this.labelDeletedKey.Size = new System.Drawing.Size(0, 23);
             this.labelDeletedKey.TabIndex = 6;
             // 
+            // Update
+            // 
+            this.Update.Controls.Add(this.dateTimePickerTo);
+            this.Update.Controls.Add(this.dateTimePickerFrom);
+            this.Update.Controls.Add(this.labelto);
+            this.Update.Controls.Add(this.labelfrom);
+            this.Update.Controls.Add(this.textBox2);
+            this.Update.Controls.Add(this.labelTextBox2);
+            this.Update.Controls.Add(this.textBox1);
+            this.Update.Controls.Add(this.labelTextBox1);
+            this.Update.Controls.Add(this.labelComboBox2);
+            this.Update.Controls.Add(this.comboBox2);
+            this.Update.Controls.Add(this.labelComboBox1);
+            this.Update.Controls.Add(this.keyTextBox);
+            this.Update.Controls.Add(this.labelKey);
+            this.Update.Controls.Add(this.comboBox1);
+            this.Update.Controls.Add(this.label11);
+            this.Update.Controls.Add(this.updateTableComboBox);
+            this.Update.Controls.Add(this.updateGridView);
+            this.Update.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.Update.Location = new System.Drawing.Point(4, 29);
+            this.Update.Name = "Update";
+            this.Update.Size = new System.Drawing.Size(891, 502);
+            this.Update.TabIndex = 5;
+            this.Update.Text = "Изменить";
+            this.Update.UseVisualStyleBackColor = true;
+            // 
+            // dateTimePickerTo
+            // 
+            this.dateTimePickerTo.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.dateTimePickerTo.Location = new System.Drawing.Point(657, 289);
+            this.dateTimePickerTo.MinDate = new System.DateTime(1990, 1, 1, 0, 0, 0, 0);
+            this.dateTimePickerTo.Name = "dateTimePickerTo";
+            this.dateTimePickerTo.Size = new System.Drawing.Size(231, 34);
+            this.dateTimePickerTo.TabIndex = 18;
+            this.dateTimePickerTo.Value = new System.DateTime(2022, 12, 27, 15, 39, 47, 0);
+            // 
+            // dateTimePickerFrom
+            // 
+            this.dateTimePickerFrom.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.dateTimePickerFrom.Location = new System.Drawing.Point(657, 249);
+            this.dateTimePickerFrom.MinDate = new System.DateTime(1990, 1, 1, 0, 0, 0, 0);
+            this.dateTimePickerFrom.Name = "dateTimePickerFrom";
+            this.dateTimePickerFrom.Size = new System.Drawing.Size(231, 34);
+            this.dateTimePickerFrom.TabIndex = 17;
+            this.dateTimePickerFrom.Value = new System.DateTime(2022, 12, 27, 0, 0, 0, 0);
+            // 
+            // labelto
+            // 
+            this.labelto.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.labelto.AutoSize = true;
+            this.labelto.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelto.Location = new System.Drawing.Point(502, 292);
+            this.labelto.Name = "labelto";
+            this.labelto.Size = new System.Drawing.Size(149, 31);
+            this.labelto.TabIndex = 16;
+            this.labelto.Text = "Дата выезда:";
+            // 
+            // labelfrom
+            // 
+            this.labelfrom.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.labelfrom.AutoSize = true;
+            this.labelfrom.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelfrom.Location = new System.Drawing.Point(502, 252);
+            this.labelfrom.Name = "labelfrom";
+            this.labelfrom.Size = new System.Drawing.Size(161, 31);
+            this.labelfrom.TabIndex = 15;
+            this.labelfrom.Text = "Дата приезда:";
+            // 
+            // textBox2
+            // 
+            this.textBox2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBox2.Location = new System.Drawing.Point(657, 209);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(231, 34);
+            this.textBox2.TabIndex = 14;
+            // 
+            // labelTextBox2
+            // 
+            this.labelTextBox2.AutoSize = true;
+            this.labelTextBox2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelTextBox2.Location = new System.Drawing.Point(502, 209);
+            this.labelTextBox2.Name = "labelTextBox2";
+            this.labelTextBox2.Size = new System.Drawing.Size(69, 28);
+            this.labelTextBox2.TabIndex = 13;
+            this.labelTextBox2.Text = "Пусто:";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBox1.Location = new System.Drawing.Point(657, 169);
+            this.textBox1.MaxLength = 50;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(231, 34);
+            this.textBox1.TabIndex = 12;
+            this.textBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
+            // 
+            // labelTextBox1
+            // 
+            this.labelTextBox1.AutoSize = true;
+            this.labelTextBox1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelTextBox1.Location = new System.Drawing.Point(502, 169);
+            this.labelTextBox1.Name = "labelTextBox1";
+            this.labelTextBox1.Size = new System.Drawing.Size(69, 28);
+            this.labelTextBox1.TabIndex = 11;
+            this.labelTextBox1.Text = "Пусто:";
+            // 
+            // labelComboBox2
+            // 
+            this.labelComboBox2.AutoSize = true;
+            this.labelComboBox2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelComboBox2.Location = new System.Drawing.Point(502, 127);
+            this.labelComboBox2.Name = "labelComboBox2";
+            this.labelComboBox2.Size = new System.Drawing.Size(69, 28);
+            this.labelComboBox2.TabIndex = 10;
+            this.labelComboBox2.Text = "Пусто:";
+            this.labelComboBox2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // comboBox2
+            // 
+            this.comboBox2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Location = new System.Drawing.Point(657, 127);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(231, 36);
+            this.comboBox2.TabIndex = 9;
+            // 
+            // labelComboBox1
+            // 
+            this.labelComboBox1.AutoSize = true;
+            this.labelComboBox1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelComboBox1.Location = new System.Drawing.Point(502, 85);
+            this.labelComboBox1.Name = "labelComboBox1";
+            this.labelComboBox1.Size = new System.Drawing.Size(69, 28);
+            this.labelComboBox1.TabIndex = 8;
+            this.labelComboBox1.Text = "Пусто:";
+            this.labelComboBox1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // keyTextBox
+            // 
+            this.keyTextBox.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.keyTextBox.Location = new System.Drawing.Point(657, 45);
+            this.keyTextBox.Name = "keyTextBox";
+            this.keyTextBox.ReadOnly = true;
+            this.keyTextBox.Size = new System.Drawing.Size(231, 34);
+            this.keyTextBox.TabIndex = 7;
+            // 
+            // labelKey
+            // 
+            this.labelKey.AutoSize = true;
+            this.labelKey.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelKey.Location = new System.Drawing.Point(502, 45);
+            this.labelKey.Name = "labelKey";
+            this.labelKey.Size = new System.Drawing.Size(66, 28);
+            this.labelKey.TabIndex = 6;
+            this.labelKey.Text = "Ключ:";
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(657, 85);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(231, 36);
+            this.comboBox1.TabIndex = 5;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label11.Location = new System.Drawing.Point(502, 3);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(89, 28);
+            this.label11.TabIndex = 4;
+            this.label11.Text = "Таблица";
+            // 
+            // updateTableComboBox
+            // 
+            this.updateTableComboBox.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.updateTableComboBox.FormattingEnabled = true;
+            this.updateTableComboBox.Items.AddRange(new object[] {
+            "Order",
+            "Room",
+            "Reservation",
+            "users",
+            "Organization",
+            "Guest"});
+            this.updateTableComboBox.Location = new System.Drawing.Point(657, 3);
+            this.updateTableComboBox.Name = "updateTableComboBox";
+            this.updateTableComboBox.Size = new System.Drawing.Size(231, 36);
+            this.updateTableComboBox.TabIndex = 3;
+            this.updateTableComboBox.SelectedValueChanged += new System.EventHandler(this.updateTableComboBox_SelectedValueChanged);
+            // 
+            // updateGridView
+            // 
+            this.updateGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.updateGridView.Location = new System.Drawing.Point(3, 3);
+            this.updateGridView.Name = "updateGridView";
+            this.updateGridView.RowHeadersWidth = 51;
+            this.updateGridView.RowTemplate.Height = 29;
+            this.updateGridView.Size = new System.Drawing.Size(493, 496);
+            this.updateGridView.TabIndex = 0;
+            this.updateGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.updateGridView_CellClick);
+            // 
             // Administrator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -577,6 +803,9 @@ namespace DBProject
             this.Delete.ResumeLayout(false);
             this.Delete.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.deletedDataGridView)).EndInit();
+            this.Update.ResumeLayout(false);
+            this.Update.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.updateGridView)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -624,6 +853,24 @@ namespace DBProject
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Label labelDeletedKey;
+        private System.Windows.Forms.TabPage Update;
+        private System.Windows.Forms.DataGridView updateGridView;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.ComboBox updateTableComboBox;
+        private System.Windows.Forms.DateTimePicker dateTimePickerTo;
+        private System.Windows.Forms.DateTimePicker dateTimePickerFrom;
+        private System.Windows.Forms.Label labelto;
+        private System.Windows.Forms.Label labelfrom;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Label labelTextBox2;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label labelTextBox1;
+        private System.Windows.Forms.Label labelComboBox2;
+        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.Label labelComboBox1;
+        private System.Windows.Forms.TextBox keyTextBox;
+        private System.Windows.Forms.Label labelKey;
+        private System.Windows.Forms.ComboBox comboBox1;
     }
 }
 
