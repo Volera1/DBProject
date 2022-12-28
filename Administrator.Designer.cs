@@ -90,6 +90,7 @@ namespace DBProject
             this.updateTableComboBox = new System.Windows.Forms.ComboBox();
             this.updateGridView = new System.Windows.Forms.DataGridView();
             this.labelfrom = new System.Windows.Forms.Label();
+            this.btnUpdate = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgName)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.Query.SuspendLayout();
@@ -125,10 +126,13 @@ namespace DBProject
             // 
             // dgName
             // 
+            this.dgName.AllowUserToAddRows = false;
+            this.dgName.AllowUserToDeleteRows = false;
             this.dgName.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.dgName.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgName.Location = new System.Drawing.Point(10, 283);
             this.dgName.Name = "dgName";
+            this.dgName.ReadOnly = true;
             this.dgName.RowHeadersWidth = 51;
             this.dgName.RowTemplate.Height = 29;
             this.dgName.Size = new System.Drawing.Size(884, 213);
@@ -391,6 +395,7 @@ namespace DBProject
             this.organizationsGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.organizationsGridView.Location = new System.Drawing.Point(451, 3);
             this.organizationsGridView.Name = "organizationsGridView";
+            this.organizationsGridView.ReadOnly = true;
             this.organizationsGridView.RowHeadersWidth = 51;
             this.organizationsGridView.RowTemplate.Height = 29;
             this.organizationsGridView.Size = new System.Drawing.Size(437, 496);
@@ -575,6 +580,7 @@ namespace DBProject
             this.deletedDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.deletedDataGridView.Location = new System.Drawing.Point(3, 45);
             this.deletedDataGridView.Name = "deletedDataGridView";
+            this.deletedDataGridView.ReadOnly = true;
             this.deletedDataGridView.RowHeadersWidth = 51;
             this.deletedDataGridView.RowTemplate.Height = 29;
             this.deletedDataGridView.Size = new System.Drawing.Size(885, 454);
@@ -590,6 +596,7 @@ namespace DBProject
             // 
             // Update
             // 
+            this.Update.Controls.Add(this.btnUpdate);
             this.Update.Controls.Add(this.dateTimePickerTo);
             this.Update.Controls.Add(this.dateTimePickerFrom);
             this.Update.Controls.Add(this.labelto);
@@ -774,7 +781,9 @@ namespace DBProject
             // 
             this.updateGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.updateGridView.Location = new System.Drawing.Point(3, 3);
+            this.updateGridView.MultiSelect = false;
             this.updateGridView.Name = "updateGridView";
+            this.updateGridView.ReadOnly = true;
             this.updateGridView.RowHeadersWidth = 51;
             this.updateGridView.RowTemplate.Height = 29;
             this.updateGridView.Size = new System.Drawing.Size(493, 496);
@@ -791,6 +800,17 @@ namespace DBProject
             this.labelfrom.Size = new System.Drawing.Size(161, 31);
             this.labelfrom.TabIndex = 15;
             this.labelfrom.Text = "Дата приезда:";
+            // 
+            // btnUpdate
+            // 
+            this.btnUpdate.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnUpdate.Location = new System.Drawing.Point(502, 425);
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.Size = new System.Drawing.Size(386, 74);
+            this.btnUpdate.TabIndex = 19;
+            this.btnUpdate.Text = "Принять изменения";
+            this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // Administrator
             // 
@@ -883,6 +903,7 @@ namespace DBProject
         private System.Windows.Forms.Label labelKey;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.TabPage addRoom;
+        private System.Windows.Forms.Button btnUpdate;
     }
 }
 
