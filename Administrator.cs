@@ -419,7 +419,7 @@ namespace DBProject
                 }
                 else if (selectedUpdateTable == "Guest")
                 {
-                    comboBox1.SelectedItem = null;
+                    //comboBox1.SelectedItem = null;
                     comboBox1.SelectedItem = row.Cells[2].Value;
                     textBox1.Text = row.Cells[1].Value.ToString();
                 }
@@ -501,6 +501,24 @@ namespace DBProject
                     }
                 case "Guest":
                     {
+                        var org = "";
+                        if (comboBox1.SelectedItem != null) { org = comboBox1.SelectedItem.ToString(); }
+                        var fio = textBox1.Text;
+                        if (fio == "")
+                        {
+                            MessageBox.Show("Заполните ФИО", "ОЙ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                        else
+                        {
+                            database.openConnection();
+                            string querystring = $@"update [Guest] set OrgKey='{org}',FIO='{fio}' where Pasport='{thisKey}'";
+                            SqlCommand command = new SqlCommand(querystring, database.GetConnection());
+                            command.ExecuteNonQuery();
+                            database.closeConnection();
+                            MessageBox.Show("Успешно изменена запись", "Ура", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                        }
+
                         break;
                     }
                 case "Reservation":
@@ -527,6 +545,20 @@ namespace DBProject
                     }
                 case "Organization":
                     {
+                        if (textBox1.Text!="") {
+                            var name=textBox1.Text;
+                            var feature = textBox2.Text;
+                            database.openConnection();
+                            string querystring = $@"update [Organization] set OrgName='{name}', features='{feature}' where OrgKey={thisKey}";
+                            SqlCommand command = new SqlCommand(querystring, database.GetConnection());
+                            command.ExecuteNonQuery();
+                            database.closeConnection();
+                            MessageBox.Show("Успешно изменена запись", "Ура", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Название у организации должно быть", "ОЙ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
                         break;
                     }
                 case "users":
