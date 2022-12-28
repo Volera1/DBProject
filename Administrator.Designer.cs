@@ -63,6 +63,7 @@ namespace DBProject
             this.label5 = new System.Windows.Forms.Label();
             this.orgNumComboBox = new System.Windows.Forms.ComboBox();
             this.btnAddReservation = new System.Windows.Forms.Button();
+            this.addRoom = new System.Windows.Forms.TabPage();
             this.Delete = new System.Windows.Forms.TabPage();
             this.btnDelete = new System.Windows.Forms.Button();
             this.deletedComboBox = new System.Windows.Forms.ComboBox();
@@ -75,7 +76,6 @@ namespace DBProject
             this.dateTimePickerTo = new System.Windows.Forms.DateTimePicker();
             this.dateTimePickerFrom = new System.Windows.Forms.DateTimePicker();
             this.labelto = new System.Windows.Forms.Label();
-            this.labelfrom = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.labelTextBox2 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
@@ -89,6 +89,7 @@ namespace DBProject
             this.label11 = new System.Windows.Forms.Label();
             this.updateTableComboBox = new System.Windows.Forms.ComboBox();
             this.updateGridView = new System.Windows.Forms.DataGridView();
+            this.labelfrom = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgName)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.Query.SuspendLayout();
@@ -140,6 +141,7 @@ namespace DBProject
             this.tabControl1.Controls.Add(this.addUser);
             this.tabControl1.Controls.Add(this.addOrder);
             this.tabControl1.Controls.Add(this.addReservation);
+            this.tabControl1.Controls.Add(this.addRoom);
             this.tabControl1.Controls.Add(this.Delete);
             this.tabControl1.Controls.Add(this.Update);
             this.tabControl1.Location = new System.Drawing.Point(12, 12);
@@ -177,7 +179,7 @@ namespace DBProject
             this.addUser.Padding = new System.Windows.Forms.Padding(3);
             this.addUser.Size = new System.Drawing.Size(891, 502);
             this.addUser.TabIndex = 1;
-            this.addUser.Text = "Добавить пользователя";
+            this.addUser.Text = "Доб пользователя";
             this.addUser.UseVisualStyleBackColor = true;
             // 
             // btnAddUser
@@ -268,7 +270,7 @@ namespace DBProject
             this.addOrder.Name = "addOrder";
             this.addOrder.Size = new System.Drawing.Size(891, 502);
             this.addOrder.TabIndex = 2;
-            this.addOrder.Text = "Добавить проживание";
+            this.addOrder.Text = "Доб проживание";
             this.addOrder.UseVisualStyleBackColor = true;
             // 
             // bedComboBox
@@ -381,7 +383,7 @@ namespace DBProject
             this.addReservation.Name = "addReservation";
             this.addReservation.Size = new System.Drawing.Size(891, 502);
             this.addReservation.TabIndex = 3;
-            this.addReservation.Text = "Добавить резервацию";
+            this.addReservation.Text = "Доб резервацию";
             this.addReservation.UseVisualStyleBackColor = true;
             // 
             // organizationsGridView
@@ -485,6 +487,15 @@ namespace DBProject
             this.btnAddReservation.UseVisualStyleBackColor = true;
             this.btnAddReservation.Click += new System.EventHandler(this.btnAddReservation_Click);
             // 
+            // addRoom
+            // 
+            this.addRoom.Location = new System.Drawing.Point(4, 29);
+            this.addRoom.Name = "addRoom";
+            this.addRoom.Size = new System.Drawing.Size(891, 502);
+            this.addRoom.TabIndex = 6;
+            this.addRoom.Text = "Доб комнату";
+            this.addRoom.UseVisualStyleBackColor = true;
+            // 
             // Delete
             // 
             this.Delete.Controls.Add(this.btnDelete);
@@ -582,7 +593,6 @@ namespace DBProject
             this.Update.Controls.Add(this.dateTimePickerTo);
             this.Update.Controls.Add(this.dateTimePickerFrom);
             this.Update.Controls.Add(this.labelto);
-            this.Update.Controls.Add(this.labelfrom);
             this.Update.Controls.Add(this.textBox2);
             this.Update.Controls.Add(this.labelTextBox2);
             this.Update.Controls.Add(this.textBox1);
@@ -596,6 +606,7 @@ namespace DBProject
             this.Update.Controls.Add(this.label11);
             this.Update.Controls.Add(this.updateTableComboBox);
             this.Update.Controls.Add(this.updateGridView);
+            this.Update.Controls.Add(this.labelfrom);
             this.Update.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.Update.Location = new System.Drawing.Point(4, 29);
             this.Update.Name = "Update";
@@ -634,17 +645,6 @@ namespace DBProject
             this.labelto.Size = new System.Drawing.Size(149, 31);
             this.labelto.TabIndex = 16;
             this.labelto.Text = "Дата выезда:";
-            // 
-            // labelfrom
-            // 
-            this.labelfrom.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.labelfrom.AutoSize = true;
-            this.labelfrom.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.labelfrom.Location = new System.Drawing.Point(502, 252);
-            this.labelfrom.Name = "labelfrom";
-            this.labelfrom.Size = new System.Drawing.Size(161, 31);
-            this.labelfrom.TabIndex = 15;
-            this.labelfrom.Text = "Дата приезда:";
             // 
             // textBox2
             // 
@@ -781,6 +781,17 @@ namespace DBProject
             this.updateGridView.TabIndex = 0;
             this.updateGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.updateGridView_CellClick);
             // 
+            // labelfrom
+            // 
+            this.labelfrom.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.labelfrom.AutoSize = true;
+            this.labelfrom.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelfrom.Location = new System.Drawing.Point(502, 252);
+            this.labelfrom.Name = "labelfrom";
+            this.labelfrom.Size = new System.Drawing.Size(161, 31);
+            this.labelfrom.TabIndex = 15;
+            this.labelfrom.Text = "Дата приезда:";
+            // 
             // Administrator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -871,6 +882,7 @@ namespace DBProject
         private System.Windows.Forms.TextBox keyTextBox;
         private System.Windows.Forms.Label labelKey;
         private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.TabPage addRoom;
     }
 }
 

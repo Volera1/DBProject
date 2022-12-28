@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Data.Entity;
 using System.Data.SqlClient;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -24,7 +25,7 @@ namespace DBProject
             InitializeComponent();
             SqlDataAdapter adapter = new SqlDataAdapter();
             DataTable table = new DataTable();
-
+            //заполняю таблицу с организауиями и комбо бокс на Добавить резервацию
             string querystring = $@"select [OrgKey]
       ,[Features]
       ,[OrgName] from [Organization]";
@@ -38,6 +39,7 @@ namespace DBProject
             {
                 orgNumComboBox.Items.Add(table.Rows[i].Field<int>("OrgKey"));
             }
+            //Заполняю номерами комнат на Добавить резервацию
             adapter = new SqlDataAdapter();
             table = new DataTable();
 
@@ -51,6 +53,7 @@ namespace DBProject
             {
                 numRoomComboBox.Items.Add(table.Rows[i].Field<Int16>("NumRoom"));
             }
+            //Заполняю кровати на Добавить проживание
             adapter = new SqlDataAdapter();
             table = new DataTable();
 
@@ -64,6 +67,7 @@ namespace DBProject
             {
                 bedComboBox.Items.Add(table.Rows[i].Field<byte>("NumBed"));
             }
+            clearAllBoxes(); //очищаю все боксы в Изменить
         }
 
         private void btnExecute_Click(object sender, EventArgs e)
@@ -254,20 +258,6 @@ namespace DBProject
 
         }
 
-        private void updateGridView_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            selectedRow = e.RowIndex;
-
-            if (e.RowIndex >= 0)
-            {
-                //DataGridViewRow row = dgvLocationMain.Rows[selectedRow];
-
-                //tbIdLocation.Text = row.Cells[0].Value.ToString();
-                //cbCountryLocation.Text = row.Cells[2].Value.ToString();
-                //cbCityLocation.Text = row.Cells[1].Value.ToString();
-
-            }
-        }
 
         private void updateTableComboBox_SelectedValueChanged(object sender, EventArgs e)
         {
@@ -294,10 +284,31 @@ namespace DBProject
                 labelto.Visible = true;
                 dateTimePickerFrom.Visible = true;
                 dateTimePickerTo.Visible = true;
+                querystring = $@"select NumBed from [Bed]";
+                command = new SqlCommand(querystring, database.GetConnection());
+                table = new DataTable();
+                adapter.SelectCommand = command;
+                adapter.Fill(table);
+                comboBox2.Items.Clear();
+                for (int i = 0; i < table.Rows.Count; i++)
+                {
+                    comboBox2.Items.Add(table.Rows[i].Field<Byte>("NumBed"));
+                }
+                querystring = $@"select pasport from [Guest]";
+                adapter = new SqlDataAdapter();
+                table = new DataTable();
+                command = new SqlCommand(querystring, database.GetConnection());
+                adapter.SelectCommand = command;
+                adapter.Fill(table);
+                comboBox1.Items.Clear();
+                for (int i = 0; i < table.Rows.Count; i++)
+                {
+                    comboBox1.Items.Add(table.Rows[i].Field<string>("Pasport"));
+                }
             }
             else if (selectedTable == "Room")
             {
-                labelComboBox1.Text = "Кол-во кроватей:";
+                labelComboBox1.Text = "Кроватей:";
                 labelComboBox1.Visible = true;
                 comboBox1.Visible = true;
                 comboBox1.Enabled = false;
@@ -307,6 +318,17 @@ namespace DBProject
             }
             else if (selectedTable == "Guest")
             {
+                querystring = $@"select OrgKey from [Organization]";
+                adapter = new SqlDataAdapter();
+                table = new DataTable();
+                command = new SqlCommand(querystring, database.GetConnection());
+                adapter.SelectCommand = command;
+                adapter.Fill(table);
+                comboBox1.Items.Clear();
+                for (int i = 0; i < table.Rows.Count; i++)
+                {
+                    comboBox1.Items.Add(table.Rows[i].Field<int>("OrgKey"));
+                }
                 labelComboBox1.Text = "Организация:";
                 labelComboBox1.Visible = true;
                 comboBox1.Visible = true;
@@ -317,12 +339,35 @@ namespace DBProject
             else if (selectedTable == "Reservation")
             {
                 labelComboBox1.Text = "Организация:";
-                labelComboBox1.Visible = true;
-                comboBox1.Visible = true;
+                labelComboBox2.Text = "Комната:";
+                labelComboBox1.Visible = true; labelComboBox2.Visible = true;
+                comboBox1.Visible = true; comboBox2.Visible = true;
                 labelfrom.Visible = true;
                 labelto.Visible = true;
                 dateTimePickerFrom.Visible = true;
                 dateTimePickerTo.Visible = true;
+                querystring = $@"select OrgKey from Organization";
+                adapter = new SqlDataAdapter();
+                table = new DataTable();
+                command = new SqlCommand(querystring, database.GetConnection());
+                adapter.SelectCommand = command;
+                adapter.Fill(table);
+                comboBox1.Items.Clear();
+                for (int i = 0; i < table.Rows.Count; i++)
+                {
+                    comboBox1.Items.Add(table.Rows[i].Field<int>("OrgKey"));
+                }
+                querystring = $@"select NumRoom from Room";
+                adapter = new SqlDataAdapter();
+                table = new DataTable();
+                command = new SqlCommand(querystring, database.GetConnection());
+                adapter.SelectCommand = command;
+                adapter.Fill(table);
+                comboBox2.Items.Clear();
+                for (int i = 0; i < table.Rows.Count; i++)
+                {
+                    comboBox2.Items.Add(table.Rows[i].Field<Int16>("NumRoom"));
+                }
             }
             else if (selectedTable == "Organization")
             {
@@ -345,6 +390,7 @@ namespace DBProject
         }
         private void clearAllBoxes()
         {
+            keyTextBox.Clear();
             labelTextBox1.Visible = false;
             labelTextBox2.Visible = false;
             textBox1.Clear();
@@ -353,9 +399,11 @@ namespace DBProject
             textBox2.Visible = false;
             labelComboBox1.Visible = false;
             labelComboBox2.Visible = false;
-            comboBox1.Items.Clear();
             comboBox1.Enabled = true;
+            comboBox1.Items.Clear();
             comboBox2.Items.Clear();
+            comboBox1.SelectedItem = null;
+            comboBox2.SelectedItem = null;
             comboBox1.Visible = false; comboBox2.Visible = false;
             labelfrom.Visible = false;
             labelto.Visible = false;
@@ -377,6 +425,51 @@ namespace DBProject
                 }
             }
         }
-    } 
+
+        private void updateGridView_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            selectedRow = e.RowIndex;
+            String[] inits = new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" };
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow row = updateGridView.Rows[selectedRow];
+                keyTextBox.Text = row.Cells[0].Value.ToString();
+
+                if (selectedUpdateTable == "Order")
+                {
+                    comboBox1.SelectedItem = row.Cells[1].Value.ToString();
+                    comboBox2.SelectedItem = row.Cells[2].Value;
+                    dateTimePickerFrom.Value = (DateTime)row.Cells[3].Value;
+                    dateTimePickerTo.Value = (DateTime)row.Cells[4].Value;
+                }
+                else if (selectedUpdateTable == "Room")
+                {
+                    comboBox1.Enabled = true;
+                    comboBox1.Items.AddRange(inits);
+                    comboBox1.SelectedItem = row.Cells[1].Value.ToString();
+                    comboBox1.Enabled = false;
+                    textBox1.Text = row.Cells[2].Value.ToString();
+                }
+                else if (selectedUpdateTable == "Guest")
+                {
+                    comboBox1.SelectedItem = null;
+                    comboBox1.SelectedItem = row.Cells[2].Value;
+                    textBox1.Text = row.Cells[1].Value.ToString();
+                }
+                else if (selectedUpdateTable == "Reservation")
+                {
+                    comboBox1.SelectedItem = row.Cells[1].Value;
+                    dateTimePickerFrom.Value = (DateTime)row.Cells[3].Value;
+                    dateTimePickerTo.Value = (DateTime)row.Cells[4].Value;
+                    comboBox2.SelectedItem = row.Cells[5].Value;
+                }
+                else if (selectedUpdateTable == "Organization")
+                {
+                    textBox1.Text = row.Cells[2].Value.ToString();
+                    textBox2.Text = row.Cells[1].Value.ToString();
+                }
+            }
+        }
+    }
     
 }
